@@ -1,27 +1,23 @@
 /**
- * Combines two lists of equal length in alternating order
+ * ziplist for E27
  * Created by Cassandra Largosa on 2/6/2017.
  */
 
-const testA = [1, 2, 3];
-const testB = ['a', 'b', 'c'];
+const test1 = [1, 2, 3];
+const test2 = ['a', 'b', 'c'];
 
-function zipList(a, b) {
-  let list = [];
-  if (a.length === b.length) {
-    for (let i = 0; i < a.length; i++) {
-      list.push(a[i]);
-      list.push(b[i]);
-    }
-    return list
+function zipList(list1, list2) {
+  const zip = [];
+  for (let i = 0; i < list1.length; i += 1) {
+    zip.push(list1[i], list2[i]);
   }
-  return 'Cannot zip lists of different lengths'
+  return zip;
 }
 
-console.log(zipList(testA, testB));
+console.log(zipList(test1, test2));
 
-function zipListTheSimpleWay(a, b) {
-  return _.union(_.flatten(_.zip(a, b)));
+function zipListTheSimpleWay(list1, list2) { // aka underscore
+  return _.flatten(_.zip(list1, list2));
 }
 
-console.log(zipListTheSimpleWay(testA, testB));
+console.log(zipListTheSimpleWay(test1, test2));
